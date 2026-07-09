@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <template id="island_borne_homepage_template" name="Island Borne Homepage" page="True">
+        <t t-call="website.layout">
+            <t t-set="title">Island Borne</t>
+            <t t-set="no_header" t-value="True"/>
+            <t t-set="no_footer" t-value="True"/>
+
+            <div id="wrap" class="ib-page">
+                <div class="ib-topbar">AVAILABLE IN STORES ACROSS TRINIDAD</div>
+
+                <header class="ib-header" id="ib-top">
+                    <a href="#ib-top" class="ib-logo-link" aria-label="Island Borne home">
+                        <img src="/island_borne_theme/static/src/img/ib_logo_header.png" alt="Island Borne" class="ib-logo"/>
+                    </a>
+                    <nav class="ib-nav" aria-label="Island Borne navigation">
+                        <a href="#ib-about">about</a>
+                        <a href="#ib-products">products</a>
+                        <a href="#ib-fragrances">fragrances</a>
+                    </nav>
+                    <div class="ib-socials" aria-label="Social links">
+                        <a href="#" aria-label="Instagram"><span class="fa fa-instagram"></span></a>
+                        <a href="#" aria-label="Threads"><span class="fa fa-at"></span></a>
+                        <a href="#" aria-label="TikTok"><span class="fa fa-music"></span></a>
+                    </div>
+                </header>
+
+                <section class="ib-hero" id="ib-about">
+                    <div class="ib-hero-copy">
+                        <h1>borne<br/>to shine</h1>
+                        <p>At Island Borne, we believe that every body and every budget deserves a little love. That’s why we create skincare that’s all about feeling good in your own skin, without the hefty price tag.</p>
+                        <a href="#ib-store-finder" class="ib-btn">FIND A RETAILER</a>
+                    </div>
+                    <div class="ib-hero-image" role="img" aria-label="Island Borne products on tile background"></div>
+                </section>
+
+                <section class="ib-story" id="ib-fragrances">
+                    <div class="ib-scent-panel">
+                        <h2>pick your scent</h2>
+                        <img src="/island_borne_theme/static/src/img/ib_scent_blob.png" alt="Island Borne scent options"/>
+                    </div>
+                    <div class="ib-story-copy">
+                        <h2>AT ISLAND BORNE, WE BELIEVE THAT EVERY BODY AND EVERY BUDGET DESERVES A LITTLE LOVE.</h2>
+                        <p>That’s why we create skincare that’s all about feeling good in your own skin, without the hefty price tag.</p>
+                        <p>Our products are made for everyday indulgence: rich in moisture, bursting with invigorating fragrances and designed to leave your skin feeling soft and refreshed. We’re here to empower you to step out and shine, starting with how you feel in your skin.</p>
+                        <p>Because looking after yourself shouldn’t cost the earth, we’ve wrapped it all up in sustainable packaging you can feel good about too.</p>
+                        <p>Island Borne is skincare that keeps it real, feels like a treat and fits into real life.</p>
+                    </div>
+                </section>
+
+                <section class="ib-products-banner" aria-label="Our products"></section>
+
+                <section class="ib-products" id="ib-products">
+                    <div class="ib-product-card">
+                        <img src="/island_borne_theme/static/src/img/ib_bottle_cool_shower.png" alt="Cool Clean, Clean Shower Gel"/>
+                        <h3>COOL<br/>CLEAN, CLEAN</h3>
+                        <p>Shower Gel | 300ml</p>
+                    </div>
+                    <div class="ib-product-card">
+                        <img src="/island_borne_theme/static/src/img/ib_bottle_juicy_shower.png" alt="Juicy Clean, Clean Shower Gel"/>
+                        <h3>JUICY<br/>CLEAN, CLEAN</h3>
+                        <p>Shower Gel | 300ml</p>
+                    </div>
+                    <div class="ib-product-card">
+                        <img src="/island_borne_theme/static/src/img/ib_bottle_yummy_shower.png" alt="Yummy Clean, Clean Shower Gel"/>
+                        <h3>YUMMY<br/>CLEAN, CLEAN</h3>
+                        <p>Shower Gel | 300ml</p>
+                    </div>
+                    <div class="ib-product-card">
+                        <img src="/island_borne_theme/static/src/img/ib_bottle_cool_lotion.png" alt="Cool Smooth, Smooth Lotion"/>
+                        <h3>COOL<br/>SMOOTH, SMOOTH</h3>
+                        <p>Lotion | 300ml</p>
+                    </div>
+                    <div class="ib-product-card">
+                        <img src="/island_borne_theme/static/src/img/ib_bottle_juicy_lotion.png" alt="Juicy Smooth, Smooth Lotion"/>
+                        <h3>JUICY<br/>SMOOTH, SMOOTH</h3>
+                        <p>Lotion | 300ml</p>
+                    </div>
+                    <div class="ib-product-card">
+                        <img src="/island_borne_theme/static/src/img/ib_bottle_yummy_lotion.png" alt="Yummy Smooth, Smooth Lotion"/>
+                        <h3>YUMMY<br/>SMOOTH, SMOOTH</h3>
+                        <p>Lotion | 300ml</p>
+                    </div>
+                </section>
+
+                <section class="ib-store-section" id="ib-store-finder" data-google-key="PASTE_GOOGLE_MAPS_API_KEY_HERE">
+                    <div class="ib-store-inner">
+                        <div class="ib-store-title-row">
+                            <h2>STORE FINDER</h2>
+                            <p>for extra hydration for your skin</p>
+                        </div>
+                        <div class="ib-store-grid">
+                            <aside class="ib-store-sidebar">
+                                <div class="ib-search-wrap">
+                                    <input id="ib-store-search" type="search" placeholder="Search for a store..." aria-label="Search for a store"/>
+                                    <button type="button" id="ib-store-search-button" aria-label="Search"><span class="fa fa-search"></span></button>
+                                </div>
+                                <div id="ib-store-list" class="ib-store-list" aria-label="Retailer list"></div>
+                            </aside>
+                            <div class="ib-map-wrap">
+                                <div id="ib-google-map" class="ib-google-map" aria-label="Interactive Google Map"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <footer class="ib-footer">
+                    <div class="ib-footer-inner">
+                        <div class="ib-footer-logo-wrap">
+                            <img src="/island_borne_theme/static/src/img/ib_footer_logo.png" alt="Island Borne"/>
+                        </div>
+                        <nav class="ib-footer-menu" aria-label="Footer navigation">
+                            <a href="#ib-about">ABOUT</a>
+                            <a href="#ib-products">PRODUCTS</a>
+                            <a href="#ib-fragrances">FRAGRANCES</a>
+                            <a href="#">POLICY</a>
+                        </nav>
+                        <div class="ib-footer-address">
+                            <p>Distributed by Immortelle Beauty<br/>20 Geridot Drive, Diamond Vale,<br/>Diego Martin.<br/>+1 868 716 8990<br/>hello@islandborne.com</p>
+                        </div>
+                        <div class="ib-newsletter">
+                            <form action="#" class="ib-newsletter-form">
+                                <input type="email" placeholder="Your email address" aria-label="Your email address"/>
+                                <button type="submit" aria-label="Submit newsletter signup">→</button>
+                            </form>
+                            <h3>STAY CONNECTED</h3>
+                            <p>Sign up for our newsletter</p>
+                            <div class="ib-footer-socials">
+                                <a href="#" aria-label="Instagram"><span class="fa fa-instagram"></span></a>
+                                <a href="#" aria-label="Threads"><span class="fa fa-at"></span></a>
+                                <a href="#" aria-label="TikTok"><span class="fa fa-music"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ib-copyright">© 2024 Island Borne. All rights reserved.</div>
+                </footer>
+            </div>
+        </t>
+    </template>
+
+    <record id="island_borne_homepage" model="website.page">
+        <field name="name">Island Borne Homepage</field>
+        <field name="url">/island-borne</field>
+        <field name="is_published">True</field>
+        <field name="view_id" ref="island_borne_homepage_template"/>
+    </record>
+    </data>
+</odoo>
