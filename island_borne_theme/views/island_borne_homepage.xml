@@ -1,0 +1,1267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="island_borne_homepage_template" model="ir.ui.view">
+        <field name="name">Island Borne Homepage</field>
+        <field name="key">island_borne_theme.island_borne_homepage_template</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-name="island_borne_theme.island_borne_homepage_template">
+                <t t-call="website.layout">
+                    <t t-set="title">Island Borne</t>
+                    <t t-set="no_header" t-value="True"/>
+                    <t t-set="no_footer" t-value="True"/>
+
+<style type="text/css"><![CDATA[
+
+/* Force this page to behave like a clean landing page even inside Odoo Website editor */
+html:has(.ib-page),
+body:has(.ib-page),
+body.ib-island-page {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fbf0e5 !important;
+    overflow-x: hidden !important;
+}
+body:has(.ib-page) #wrapwrap > header,
+body:has(.ib-page) #wrapwrap > footer,
+body:has(.ib-page) .o_header_standard,
+body:has(.ib-page) .o_header_affixed,
+body:has(.ib-page) .o_footer,
+body:has(.ib-page) header#top,
+body:has(.ib-page) footer#bottom,
+body.ib-island-page #wrapwrap > header,
+body.ib-island-page #wrapwrap > footer,
+body.ib-island-page .o_header_standard,
+body.ib-island-page .o_header_affixed,
+body.ib-island-page .o_footer,
+body.ib-island-page header#top,
+body.ib-island-page footer#bottom {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+}
+body:has(.ib-page) main,
+body:has(.ib-page) #wrapwrap,
+body:has(.ib-page) #wrap,
+body.ib-island-page main,
+body.ib-island-page #wrapwrap,
+body.ib-island-page #wrap {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+    width: 100% !important;
+}
+body:has(.ib-page) .container,
+body.ib-island-page .container {
+    max-width: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Pacifico&display=swap');
+
+:root {
+    --ib-coral: #f75941;
+    --ib-coral-dark: #e84f3a;
+    --ib-cream: #fbf0e5;
+    --ib-cream-soft: #fff8ef;
+    --ib-lavender: #d5bed8;
+    --ib-yellow: #ffe881;
+    --ib-text: #f75941;
+    --ib-black: #111111;
+    --ib-white: #ffffff;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body:has(.ib-page) {
+    margin: 0;
+    background: var(--ib-cream);
+}
+
+.ib-page,
+.ib-page * {
+    box-sizing: border-box;
+}
+
+.ib-page {
+    width: 100%;
+    overflow: hidden;
+    background: var(--ib-cream);
+    color: var(--ib-text);
+    font-family: 'Montserrat', Arial, sans-serif;
+    line-height: 1.35;
+}
+
+.ib-topbar {
+    width: 100%;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ib-coral);
+    color: var(--ib-white);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.ib-header {
+    height: 55px;
+    background: var(--ib-cream);
+    display: grid;
+    grid-template-columns: minmax(135px, 1fr) minmax(280px, 520px) minmax(120px, 1fr);
+    align-items: center;
+    padding: 0 44px;
+    position: relative;
+    z-index: 10;
+}
+
+.ib-logo-link {
+    display: inline-flex;
+    align-items: center;
+    width: max-content;
+}
+
+.ib-logo {
+    width: 93px;
+    height: auto;
+    display: block;
+}
+
+.ib-nav {
+    display: flex;
+    justify-content: center;
+    gap: clamp(48px, 7.2vw, 88px);
+}
+
+.ib-nav a,
+.ib-socials a,
+.ib-footer a {
+    color: var(--ib-coral);
+    text-decoration: none;
+}
+
+.ib-nav a {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: lowercase;
+    letter-spacing: .2px;
+    transition: opacity .2s ease;
+}
+
+.ib-nav a:hover,
+.ib-socials a:hover,
+.ib-footer a:hover {
+    opacity: .75;
+}
+
+.ib-socials {
+    justify-self: end;
+    display: flex;
+    gap: 17px;
+    align-items: center;
+    color: var(--ib-coral);
+    font-size: 19px;
+}
+
+.ib-hero {
+    min-height: 365px;
+    display: grid;
+    grid-template-columns: 46% 54%;
+    background: var(--ib-cream);
+    position: relative;
+}
+
+.ib-hero::after,
+.ib-story::after,
+.ib-products-banner::after {
+    content: "";
+    position: absolute;
+    left: -2%;
+    right: -2%;
+    bottom: -1px;
+    height: 28px;
+    background: var(--ib-cream);
+    clip-path: polygon(0 48%, 8% 61%, 16% 43%, 25% 56%, 34% 35%, 44% 55%, 54% 40%, 64% 63%, 73% 39%, 83% 54%, 92% 39%, 100% 55%, 100% 100%, 0 100%);
+    z-index: 3;
+}
+
+.ib-hero-copy {
+    background: var(--ib-lavender);
+    padding: 54px 54px 62px 45px;
+    position: relative;
+    z-index: 1;
+}
+
+.ib-hero-copy h1 {
+    margin: 0 0 19px;
+    color: var(--ib-coral);
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(40px, 6vw, 67px);
+    line-height: .83;
+    font-weight: 400;
+    letter-spacing: .4px;
+}
+
+.ib-hero-copy p {
+    max-width: 270px;
+    margin: 0 0 25px;
+    color: var(--ib-coral);
+    font-size: clamp(15px, 1.6vw, 18px);
+    font-weight: 700;
+    line-height: 1.45;
+}
+
+.ib-btn {
+    min-width: 137px;
+    height: 43px;
+    padding: 0 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: var(--ib-coral);
+    color: var(--ib-white);
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 800;
+    text-decoration: none;
+    letter-spacing: .7px;
+    transition: transform .2s ease, background .2s ease;
+}
+
+.ib-btn:hover {
+    color: var(--ib-white);
+    background: var(--ib-coral-dark);
+    transform: translateY(-1px);
+}
+
+.ib-hero-image {
+    background-image: url('/island_borne_theme/static/src/img/ib_hero_products_tiles.png');
+    background-size: cover;
+    background-position: center;
+    min-height: 365px;
+}
+
+.ib-story {
+    position: relative;
+    display: grid;
+    grid-template-columns: 45% 55%;
+    gap: 0;
+    background: var(--ib-cream);
+    padding: 44px 45px 38px;
+}
+
+.ib-story::after {
+    bottom: -2px;
+    height: 16px;
+    background: var(--ib-cream);
+    z-index: 2;
+}
+
+.ib-scent-panel h2 {
+    margin: 0 0 13px 6px;
+    color: var(--ib-coral);
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(26px, 4vw, 38px);
+    line-height: 1;
+    font-weight: 400;
+}
+
+.ib-scent-panel img {
+    width: min(290px, 92%);
+    height: auto;
+    display: block;
+    margin-left: -20px;
+}
+
+.ib-story-copy {
+    padding-left: 25px;
+    padding-right: 10px;
+}
+
+.ib-story-copy h2 {
+    margin: 0 0 22px;
+    max-width: 405px;
+    color: var(--ib-coral);
+    font-size: clamp(22px, 3.1vw, 36px);
+    line-height: 1.19;
+    font-weight: 800;
+    letter-spacing: .5px;
+}
+
+.ib-story-copy p {
+    max-width: 375px;
+    margin: 0 0 16px;
+    color: var(--ib-coral);
+    font-size: clamp(13px, 1.45vw, 16px);
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.ib-products-banner {
+    height: 127px;
+    background-image: url('/island_borne_theme/static/src/img/ib_products_leaf_banner.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.ib-products-banner::after {
+    height: 15px;
+    bottom: -1px;
+    background: var(--ib-cream);
+}
+
+.ib-products {
+    background: var(--ib-cream);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 56px;
+    column-gap: 40px;
+    padding: 42px 52px 77px;
+}
+
+.ib-product-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    color: var(--ib-black);
+}
+
+.ib-product-card img {
+    width: 97px;
+    height: 162px;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.ib-product-card h3 {
+    margin: 0 0 1px;
+    color: var(--ib-black);
+    font-size: clamp(14px, 1.5vw, 18px);
+    line-height: 1.15;
+    font-weight: 900;
+    letter-spacing: .2px;
+}
+
+.ib-product-card p {
+    margin: 0;
+    color: var(--ib-black);
+    font-size: clamp(13px, 1.4vw, 17px);
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.ib-store-section {
+    background: var(--ib-coral);
+    padding: 26px 52px 31px;
+    color: var(--ib-white);
+}
+
+.ib-store-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.ib-store-title-row {
+    display: flex;
+    align-items: baseline;
+    gap: 32px;
+    margin-bottom: 14px;
+}
+
+.ib-store-title-row h2 {
+    margin: 0;
+    color: var(--ib-white);
+    font-size: clamp(27px, 4.1vw, 48px);
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: 6px;
+}
+
+.ib-store-title-row p {
+    margin: 0;
+    color: var(--ib-yellow);
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(23px, 3.3vw, 42px);
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.ib-store-grid {
+    display: grid;
+    grid-template-columns: 174px minmax(0, 1fr);
+    gap: 12px;
+    min-height: 230px;
+}
+
+.ib-store-sidebar {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.ib-search-wrap {
+    display: grid;
+    grid-template-columns: 1fr 28px;
+    gap: 5px;
+    height: 27px;
+    margin-bottom: 8px;
+}
+
+.ib-search-wrap input {
+    width: 100%;
+    min-width: 0;
+    border: 0;
+    border-radius: 9px;
+    background: var(--ib-cream-soft);
+    color: var(--ib-coral);
+    font-size: 9px;
+    font-weight: 700;
+    padding: 0 10px;
+    outline: none;
+}
+
+.ib-search-wrap input::placeholder {
+    color: #5d3c36;
+    opacity: .85;
+}
+
+.ib-search-wrap button {
+    border: 0;
+    border-radius: 3px;
+    background: var(--ib-cream-soft);
+    color: var(--ib-coral);
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.ib-store-list {
+    height: 222px;
+    overflow: auto;
+    background: rgba(255,255,255,.14);
+    border: 1px solid rgba(255,255,255,.55);
+    scrollbar-width: thin;
+    scrollbar-color: var(--ib-coral) var(--ib-cream-soft);
+}
+
+.ib-store-card {
+    position: relative;
+    width: 100%;
+    border: 0;
+    font-family: inherit;
+    display: grid;
+    grid-template-columns: 25px 1fr;
+    gap: 4px;
+    padding: 14px 10px 13px;
+    background: var(--ib-cream-soft);
+    color: var(--ib-coral);
+    min-height: 72px;
+    border-bottom: 1px solid rgba(247,89,65,.25);
+    cursor: pointer;
+    text-align: left;
+}
+
+.ib-store-card.is-active,
+.ib-store-card:hover {
+    background: var(--ib-coral);
+    color: var(--ib-white);
+}
+
+.ib-store-pin {
+    width: 15px;
+    height: 20px;
+    margin: 2px auto 0;
+    display: block;
+}
+
+.ib-store-card h3 {
+    margin: 0 0 3px;
+    font-size: 9px;
+    line-height: 1.08;
+    font-weight: 800;
+}
+
+.ib-store-card p {
+    margin: 0;
+    font-size: 7.4px;
+    line-height: 1.17;
+    font-weight: 700;
+}
+
+.ib-map-wrap {
+    min-height: 230px;
+    background: #9bd5db;
+    overflow: hidden;
+}
+
+.ib-google-map,
+.ib-google-map iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 230px;
+    display: block;
+    border: 0;
+}
+
+.ib-map-fallback-notice {
+    position: absolute;
+    left: 14px;
+    bottom: 10px;
+    right: 14px;
+    color: #7e4b43;
+    background: rgba(255,248,239,.85);
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 7px 9px;
+    pointer-events: none;
+}
+
+.ib-google-map {
+    position: relative;
+}
+
+.ib-footer {
+    min-height: 169px;
+    background-color: var(--ib-coral);
+    background-image: url('/island_borne_theme/static/src/img/ib_footer_pattern_strip.png');
+    background-repeat: repeat;
+    background-size: 718px 50px;
+    color: var(--ib-white);
+    padding: 30px 53px 8px;
+}
+
+.ib-footer-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 66px 140px 1fr 232px;
+    gap: 20px;
+    align-items: start;
+}
+
+.ib-footer-logo-wrap img {
+    width: 49px;
+    height: auto;
+    display: block;
+}
+
+.ib-footer-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-top: 5px;
+}
+
+.ib-footer-menu a {
+    color: var(--ib-white);
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1.34;
+}
+
+.ib-footer-address p {
+    margin: 9px 0 0;
+    color: var(--ib-white);
+    font-size: 11px;
+    line-height: 1.22;
+    font-weight: 700;
+}
+
+.ib-newsletter {
+    color: var(--ib-white);
+}
+
+.ib-newsletter-form {
+    height: 22px;
+    display: grid;
+    grid-template-columns: 1fr 29px;
+    gap: 4px;
+    margin-bottom: 9px;
+}
+
+.ib-newsletter-form input {
+    border: 0;
+    border-radius: 999px;
+    padding: 0 16px;
+    font-size: 10px;
+    font-weight: 600;
+    outline: none;
+    color: #8d6b65;
+    background: var(--ib-cream-soft);
+}
+
+.ib-newsletter-form button {
+    border: 0;
+    border-radius: 4px;
+    background: var(--ib-cream-soft);
+    color: var(--ib-coral);
+    font-size: 18px;
+    font-weight: 900;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.ib-newsletter h3 {
+    margin: 0;
+    color: var(--ib-white);
+    font-size: 25px;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: 2.6px;
+}
+
+.ib-newsletter p {
+    margin: 2px 0 6px;
+    color: var(--ib-white);
+    font-size: 11px;
+    line-height: 1.1;
+    font-weight: 700;
+}
+
+.ib-footer-socials {
+    display: flex;
+    gap: 14px;
+    font-size: 15px;
+}
+
+.ib-footer-socials a {
+    color: var(--ib-white);
+}
+
+.ib-copyright {
+    margin-top: 19px;
+    text-align: center;
+    color: var(--ib-white);
+    font-size: 9px;
+    font-weight: 700;
+}
+
+@media (min-width: 1100px) {
+    .ib-topbar { height: 31px; font-size: 9px; }
+    .ib-header { height: 70px; padding-left: 70px; padding-right: 70px; }
+    .ib-logo { width: 118px; image-rendering: auto; }
+    .ib-nav a { font-size: 13px; }
+    .ib-socials { font-size: 22px; gap: 23px; }
+    .ib-hero { min-height: 460px; }
+    .ib-hero-copy { padding: 70px 80px 76px 72px; }
+    .ib-hero-image { min-height: 460px; }
+    .ib-story { padding: 65px 75px 55px; }
+    .ib-scent-panel img { width: 375px; }
+    .ib-products-banner { height: 160px; }
+    .ib-products { padding: 60px 95px 95px; row-gap: 72px; }
+    .ib-store-section { padding: 36px 85px 45px; }
+    .ib-store-grid { grid-template-columns: 260px minmax(0, 1fr); min-height: 340px; gap: 22px; }
+    .ib-store-list { height: 328px; }
+    .ib-map-wrap, .ib-google-map, .ib-google-map iframe { min-height: 340px; }
+    .ib-store-card { min-height: 102px; grid-template-columns: 42px 1fr; padding: 22px 18px; }
+    .ib-store-pin { width: 22px; height: 30px; }
+    .ib-store-card h3 { font-size: 14px; }
+    .ib-store-card p { font-size: 11px; }
+    .ib-search-wrap { height: 38px; grid-template-columns: 1fr 40px; }
+    .ib-search-wrap input { font-size: 12px; }
+    .ib-footer { padding: 46px 85px 14px; min-height: 215px; background-size: 900px 63px; }
+    .ib-footer-inner { grid-template-columns: 90px 180px 1fr 310px; gap: 28px; }
+    .ib-footer-logo-wrap img { width: 64px; }
+    .ib-footer-menu a { font-size: 16px; }
+    .ib-footer-address p { font-size: 14px; }
+    .ib-newsletter h3 { font-size: 31px; }
+    .ib-newsletter p { font-size: 14px; }
+    .ib-newsletter-form { height: 30px; grid-template-columns: 1fr 38px; }
+}
+
+@media (max-width: 767px) {
+    .ib-topbar {
+        height: 28px;
+        padding: 0 10px;
+        font-size: 7px;
+        letter-spacing: 3px;
+        text-align: center;
+    }
+
+    .ib-header {
+        height: auto;
+        min-height: 72px;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 18px 22px 15px;
+        text-align: center;
+    }
+
+    .ib-logo-link {
+        justify-self: center;
+    }
+
+    .ib-logo {
+        width: 116px;
+    }
+
+    .ib-nav {
+        order: 3;
+        gap: 24px;
+        flex-wrap: wrap;
+    }
+
+    .ib-nav a {
+        font-size: 12px;
+    }
+
+    .ib-socials {
+        position: absolute;
+        top: 20px;
+        right: 18px;
+        font-size: 16px;
+        gap: 10px;
+    }
+
+    .ib-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .ib-hero-copy {
+        padding: 48px 32px 60px;
+        text-align: left;
+    }
+
+    .ib-hero-copy p {
+        max-width: 330px;
+    }
+
+    .ib-hero-image {
+        min-height: 340px;
+        background-size: cover;
+    }
+
+    .ib-story {
+        grid-template-columns: 1fr;
+        padding: 48px 30px 44px;
+    }
+
+    .ib-scent-panel {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .ib-scent-panel h2 {
+        margin-left: 0;
+    }
+
+    .ib-scent-panel img {
+        margin: 0 auto;
+        width: min(315px, 100%);
+    }
+
+    .ib-story-copy {
+        padding: 0;
+        text-align: left;
+    }
+
+    .ib-story-copy h2,
+    .ib-story-copy p {
+        max-width: none;
+    }
+
+    .ib-products-banner {
+        height: 104px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .ib-products {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 44px 20px;
+        padding: 42px 28px 65px;
+    }
+
+    .ib-store-section {
+        padding: 32px 24px 36px;
+    }
+
+    .ib-store-title-row {
+        display: block;
+        margin-bottom: 18px;
+    }
+
+    .ib-store-title-row h2 {
+        font-size: 32px;
+        letter-spacing: 5px;
+        margin-bottom: 7px;
+    }
+
+    .ib-store-title-row p {
+        font-size: 24px;
+        white-space: normal;
+    }
+
+    .ib-store-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .ib-store-list {
+        height: 220px;
+    }
+
+    .ib-store-card h3 {
+        font-size: 11px;
+    }
+
+    .ib-store-card p {
+        font-size: 9px;
+    }
+
+    .ib-map-wrap,
+    .ib-google-map,
+    .ib-google-map iframe {
+        min-height: 310px;
+    }
+
+    .ib-footer {
+        padding: 34px 28px 12px;
+        background-size: 718px 50px;
+    }
+
+    .ib-footer-inner {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        text-align: center;
+        justify-items: center;
+    }
+
+    .ib-footer-menu {
+        align-items: center;
+    }
+
+    .ib-footer-address p {
+        margin-top: 0;
+    }
+
+    .ib-newsletter {
+        width: min(300px, 100%);
+    }
+
+    .ib-footer-socials {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 420px) {
+    .ib-products {
+        grid-template-columns: 1fr;
+    }
+
+    .ib-socials {
+        display: none;
+    }
+}
+
+]]></style>
+<script type="text/javascript"><![CDATA[
+try { document.body.classList.add('ib-island-page'); } catch (e) {}
+]]></script>
+<div id="wrap" class="ib-page">
+    <div class="ib-topbar">AVAILABLE IN STORES ACROSS TRINIDAD</div>
+
+    <header class="ib-header" id="ib-top">
+        <a href="#ib-top" class="ib-logo-link" aria-label="Island Borne home">
+            <img src="/island_borne_theme/static/src/img/ib_logo_header.png" alt="Island Borne" class="ib-logo"/>
+        </a>
+        <nav class="ib-nav" aria-label="Island Borne navigation">
+            <a href="#ib-about">about</a>
+            <a href="#ib-products">products</a>
+            <a href="#ib-fragrances">fragrances</a>
+        </nav>
+        <div class="ib-socials" aria-label="Social links">
+            <a href="#" aria-label="Instagram"><span>◎</span></a>
+            <a href="#" aria-label="Threads"><span>@</span></a>
+            <a href="#" aria-label="TikTok"><span>♪</span></a>
+        </div>
+    </header>
+
+    <section class="ib-hero" id="ib-about">
+        <div class="ib-hero-copy">
+            <h1>borne<br/>to shine</h1>
+            <p>At Island Borne, we believe that every body and every budget deserves a little love. That’s why we create skincare that’s all about feeling good in your own skin, without the hefty price tag.</p>
+            <a href="#ib-store-finder" class="ib-btn">FIND A RETAILER</a>
+        </div>
+        <div class="ib-hero-image" role="img" aria-label="Island Borne products on tile background"></div>
+    </section>
+
+    <section class="ib-story" id="ib-fragrances">
+        <div class="ib-scent-panel">
+            <h2>pick your scent</h2>
+            <img src="/island_borne_theme/static/src/img/ib_scent_blob.png" alt="Island Borne scent options"/>
+        </div>
+        <div class="ib-story-copy">
+            <h2>AT ISLAND BORNE, WE BELIEVE THAT EVERY BODY AND EVERY BUDGET DESERVES A LITTLE LOVE.</h2>
+            <p>That’s why we create skincare that’s all about feeling good in your own skin, without the hefty price tag.</p>
+            <p>Our products are made for everyday indulgence: rich in moisture, bursting with invigorating fragrances and designed to leave your skin feeling soft and refreshed. We’re here to empower you to step out and shine, starting with how you feel in your skin.</p>
+            <p>Because looking after yourself shouldn’t cost the earth, we’ve wrapped it all up in sustainable packaging you can feel good about too.</p>
+            <p>Island Borne is skincare that keeps it real, feels like a treat and fits into real life.</p>
+        </div>
+    </section>
+
+    <section class="ib-products-banner" aria-label="Our products"></section>
+
+    <section class="ib-products" id="ib-products">
+        <div class="ib-product-card">
+            <img src="/island_borne_theme/static/src/img/ib_bottle_cool_shower.png" alt="Cool Clean, Clean Shower Gel"/>
+            <h3>COOL<br/>CLEAN, CLEAN</h3>
+            <p>Shower Gel | 300ml</p>
+        </div>
+        <div class="ib-product-card">
+            <img src="/island_borne_theme/static/src/img/ib_bottle_juicy_shower.png" alt="Juicy Clean, Clean Shower Gel"/>
+            <h3>JUICY<br/>CLEAN, CLEAN</h3>
+            <p>Shower Gel | 300ml</p>
+        </div>
+        <div class="ib-product-card">
+            <img src="/island_borne_theme/static/src/img/ib_bottle_yummy_shower.png" alt="Yummy Clean, Clean Shower Gel"/>
+            <h3>YUMMY<br/>CLEAN, CLEAN</h3>
+            <p>Shower Gel | 300ml</p>
+        </div>
+        <div class="ib-product-card">
+            <img src="/island_borne_theme/static/src/img/ib_bottle_cool_lotion.png" alt="Cool Smooth, Smooth Lotion"/>
+            <h3>COOL<br/>SMOOTH, SMOOTH</h3>
+            <p>Lotion | 300ml</p>
+        </div>
+        <div class="ib-product-card">
+            <img src="/island_borne_theme/static/src/img/ib_bottle_juicy_lotion.png" alt="Juicy Smooth, Smooth Lotion"/>
+            <h3>JUICY<br/>SMOOTH, SMOOTH</h3>
+            <p>Lotion | 300ml</p>
+        </div>
+        <div class="ib-product-card">
+            <img src="/island_borne_theme/static/src/img/ib_bottle_yummy_lotion.png" alt="Yummy Smooth, Smooth Lotion"/>
+            <h3>YUMMY<br/>SMOOTH, SMOOTH</h3>
+            <p>Lotion | 300ml</p>
+        </div>
+    </section>
+
+    <section class="ib-store-section" id="ib-store-finder" data-google-key="PASTE_GOOGLE_MAPS_API_KEY_HERE">
+        <div class="ib-store-inner">
+            <div class="ib-store-title-row">
+                <h2>STORE FINDER</h2>
+                <p>for extra hydration for your skin</p>
+            </div>
+            <div class="ib-store-grid">
+                <aside class="ib-store-sidebar">
+                    <div class="ib-search-wrap">
+                        <input id="ib-store-search" type="search" placeholder="Search for a store..." aria-label="Search for a store"/>
+                        <button type="button" id="ib-store-search-button" aria-label="Search">⌕</button>
+                    </div>
+                    <div id="ib-store-list" class="ib-store-list" aria-label="Retailer list"></div>
+                </aside>
+                <div class="ib-map-wrap">
+                    <div id="ib-google-map" class="ib-google-map" aria-label="Interactive Google Map"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="ib-footer">
+        <div class="ib-footer-inner">
+            <div class="ib-footer-logo-wrap">
+                <img src="/island_borne_theme/static/src/img/ib_footer_logo.png" alt="Island Borne"/>
+            </div>
+            <nav class="ib-footer-menu" aria-label="Footer navigation">
+                <a href="#ib-about">ABOUT</a>
+                <a href="#ib-products">PRODUCTS</a>
+                <a href="#ib-fragrances">FRAGRANCES</a>
+                <a href="#">POLICY</a>
+            </nav>
+            <div class="ib-footer-address">
+                <p>Distributed by Immortelle Beauty<br/>20 Geridot Drive, Diamond Vale,<br/>Diego Martin.<br/>+1 868 716 8990<br/>hello@islandborne.com</p>
+            </div>
+            <div class="ib-newsletter">
+                <form action="#" class="ib-newsletter-form">
+                    <input type="email" placeholder="Your email address" aria-label="Your email address"/>
+                    <button type="submit" aria-label="Submit newsletter signup">→</button>
+                </form>
+                <h3>STAY CONNECTED</h3>
+                <p>Sign up for our newsletter</p>
+                <div class="ib-footer-socials">
+                    <a href="#" aria-label="Instagram">◎</a>
+                    <a href="#" aria-label="Threads">@</a>
+                    <a href="#" aria-label="TikTok">♪</a>
+                </div>
+            </div>
+        </div>
+        <div class="ib-copyright">© 2024 Island Borne. All rights reserved.</div>
+    </footer>
+</div>
+<script type="text/javascript"><![CDATA[
+(function () {
+    'use strict';
+
+    const stores = [
+        {
+            name: 'Excellent Stores',
+            branch: 'Movie Towne Mall',
+            address: 'MovieTowne Boulevard, Audrey Jeffers Hwy, Port of Spain',
+            lat: 10.6618,
+            lng: -61.5331,
+        },
+        {
+            name: 'Excellent Stores',
+            branch: 'Trincity Mall',
+            address: 'Trincity Central Road, Trincity',
+            lat: 10.6263,
+            lng: -61.3544,
+        },
+        {
+            name: 'Excellent Stores',
+            branch: 'Gulf City Mall',
+            address: 'Gulf City Mall, La Romaine, San Fernando',
+            lat: 10.2724,
+            lng: -61.4633,
+        },
+        {
+            name: 'Excellent Stores',
+            branch: 'C3 Centre',
+            address: 'C3 Centre, Corinth Road, San Fernando',
+            lat: 10.2629,
+            lng: -61.4541,
+        },
+    ];
+
+    let map = null;
+    let infoWindow = null;
+    let markers = [];
+    let activeStoreIndex = 0;
+    let fallbackIframe = null;
+
+    function pinSvg(fill, innerFill) {
+        return `
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="32" viewBox="0 0 24 32" fill="none">
+                <path d="M12 0C5.84 0 .86 4.98.86 11.14.86 19.5 12 32 12 32s11.14-12.5 11.14-20.86C23.14 4.98 18.16 0 12 0Z" fill="${fill}"/>
+                <circle cx="12" cy="11" r="4.1" fill="${innerFill}"/>
+            </svg>`;
+    }
+
+    function markerIcon(fill) {
+        const svg = encodeURIComponent(pinSvg(fill, '#fff8ef'));
+        return {
+            url: `data:image/svg+xml;charset=UTF-8,${svg}`,
+            scaledSize: new google.maps.Size(28, 38),
+            anchor: new google.maps.Point(14, 38),
+        };
+    }
+
+    function listPin(fill, innerFill) {
+        return pinSvg(fill, innerFill);
+    }
+
+    function renderStoreList(filterText) {
+        const list = document.getElementById('ib-store-list');
+        if (!list) return;
+
+        const normalized = (filterText || '').toLowerCase().trim();
+        const filtered = stores
+            .map((store, index) => ({ store, index }))
+            .filter(({ store }) => {
+                const haystack = `${store.name} ${store.branch} ${store.address}`.toLowerCase();
+                return !normalized || haystack.includes(normalized);
+            });
+
+        if (!filtered.length) {
+            list.innerHTML = '<div class="ib-store-card"><span></span><div><h3>No stores found</h3><p>Try another search term.</p></div></div>';
+            return;
+        }
+
+        list.innerHTML = filtered.map(({ store, index }) => {
+            const active = index === activeStoreIndex ? ' is-active' : '';
+            return `
+                <button type="button" class="ib-store-card${active}" data-store-index="${index}">
+                    <span class="ib-store-pin">${listPin(index === activeStoreIndex ? '#fff8ef' : '#f75941', index === activeStoreIndex ? '#f75941' : '#fff8ef')}</span>
+                    <span>
+                        <h3>${store.name}<br/>${store.branch}</h3>
+                        <p>${store.address}</p>
+                    </span>
+                </button>`;
+        }).join('');
+
+        list.querySelectorAll('[data-store-index]').forEach((button) => {
+            button.addEventListener('click', function () {
+                const index = parseInt(this.getAttribute('data-store-index'), 10);
+                selectStore(index, true);
+            });
+        });
+    }
+
+    function storeInfoHtml(store) {
+        return `
+            <div style="background:#f75941;color:#fff8ef;padding:13px 16px;max-width:210px;font-family:Montserrat,Arial,sans-serif;">
+                <strong style="font-size:13px;line-height:1.1;display:block;margin-bottom:4px;">${store.name}<br/>${store.branch}</strong>
+                <span style="font-size:11px;line-height:1.25;display:block;">${store.address}</span>
+            </div>`;
+    }
+
+    function selectStore(index, shouldRenderList) {
+        const store = stores[index];
+        if (!store) return;
+        activeStoreIndex = index;
+
+        if (map && markers[index]) {
+            map.panTo({ lat: store.lat, lng: store.lng });
+            map.setZoom(13);
+            infoWindow.setContent(storeInfoHtml(store));
+            infoWindow.open({ anchor: markers[index], map });
+            markers.forEach((marker, markerIndex) => {
+                marker.setIcon(markerIcon(markerIndex === index ? '#f75941' : '#f75941'));
+            });
+        } else if (fallbackIframe) {
+            fallbackIframe.src = googleIframeUrl(store.lat, store.lng, 13);
+        }
+
+        if (shouldRenderList) {
+            const search = document.getElementById('ib-store-search');
+            renderStoreList(search ? search.value : '');
+        }
+    }
+
+    function googleIframeUrl(lat, lng, zoom) {
+        return `https://www.google.com/maps?q=${lat},${lng}&z=${zoom || 10}&output=embed`;
+    }
+
+    function initIframeFallback(mapEl) {
+        mapEl.innerHTML = `
+            <iframe title="Island Borne Google Map" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="${googleIframeUrl(stores[0].lat, stores[0].lng, 10)}"></iframe>
+            <div class="ib-map-fallback-notice">Add your Google Maps API key in the module to enable custom markers and list-to-map popups.</div>`;
+        fallbackIframe = mapEl.querySelector('iframe');
+    }
+
+    window.ibInitGoogleMap = function () {
+        const mapEl = document.getElementById('ib-google-map');
+        if (!mapEl || !window.google || !google.maps) return;
+
+        const center = { lat: 10.5364, lng: -61.3119 };
+        map = new google.maps.Map(mapEl, {
+            center,
+            zoom: 9,
+            mapTypeControl: false,
+            streetViewControl: false,
+            fullscreenControl: true,
+            zoomControl: true,
+            styles: [
+                { elementType: 'geometry', stylers: [{ color: '#e8e2d7' }] },
+                { elementType: 'labels.text.fill', stylers: [{ color: '#6e6a64' }] },
+                { elementType: 'labels.text.stroke', stylers: [{ color: '#f7f1e8' }] },
+                { featureType: 'administrative', elementType: 'geometry.stroke', stylers: [{ color: '#c4b9ab' }] },
+                { featureType: 'poi', stylers: [{ visibility: 'off' }] },
+                { featureType: 'road', elementType: 'geometry', stylers: [{ color: '#ffffff' }] },
+                { featureType: 'road', elementType: 'geometry.stroke', stylers: [{ color: '#d7cabd' }] },
+                { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#8cced7' }] },
+            ],
+        });
+
+        infoWindow = new google.maps.InfoWindow({ pixelOffset: new google.maps.Size(0, -4) });
+        markers = stores.map((store, index) => {
+            const marker = new google.maps.Marker({
+                position: { lat: store.lat, lng: store.lng },
+                map,
+                title: `${store.name} ${store.branch}`,
+                icon: markerIcon('#f75941'),
+            });
+            marker.addListener('click', function () {
+                selectStore(index, true);
+            });
+            return marker;
+        });
+        selectStore(0, true);
+    };
+
+    function loadGoogleMap(section, mapEl) {
+        const key = (section.getAttribute('data-google-key') || '').trim();
+        const hasUsableKey = key && !key.includes('PASTE_GOOGLE_MAPS_API_KEY_HERE') && key.length > 20;
+
+        if (!hasUsableKey) {
+            initIframeFallback(mapEl);
+            return;
+        }
+
+        if (window.google && google.maps) {
+            window.ibInitGoogleMap();
+            return;
+        }
+
+        const script = document.createElement('script');
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(key)}&callback=ibInitGoogleMap`;
+        script.async = true;
+        script.defer = true;
+        script.onerror = function () {
+            initIframeFallback(mapEl);
+        };
+        document.head.appendChild(script);
+    }
+
+    function ibStoreFinderStart() {
+        const section = document.querySelector('.ib-store-section');
+        const mapEl = document.getElementById('ib-google-map');
+        if (!section || !mapEl) return;
+
+        const search = document.getElementById('ib-store-search');
+        const searchButton = document.getElementById('ib-store-search-button');
+
+        renderStoreList('');
+        loadGoogleMap(section, mapEl);
+
+        if (search) {
+            search.addEventListener('input', function () {
+                renderStoreList(this.value);
+            });
+            search.addEventListener('keydown', function (event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    const first = document.querySelector('#ib-store-list [data-store-index]');
+                    if (first) first.click();
+                }
+            });
+        }
+
+        if (searchButton) {
+            searchButton.addEventListener('click', function () {
+                const first = document.querySelector('#ib-store-list [data-store-index]');
+                if (first) first.click();
+            });
+        }
+    }
+
+    function ibReady(fn) {
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', fn);
+        } else {
+            fn();
+        }
+    }
+
+    try { document.body.classList.add('ib-island-page'); } catch (e) {}
+    ibReady(ibStoreFinderStart);
+})();
+
+]]></script>
+
+                </t>
+            </t>
+        </field>
+    </record>
+
+    <record id="island_borne_homepage" model="website.page">
+        <field name="name">Island Borne Homepage</field>
+        <field name="url">/island-borne</field>
+        <field name="is_published">True</field>
+        <field name="view_id" ref="island_borne_homepage_template"/>
+    </record>
+</odoo>
